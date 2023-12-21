@@ -1,14 +1,17 @@
 from pathlib import Path
-
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'django-insecure--r@5ryi)_8_c29he20zoe0$b!up^5+6u%x%ep*jg(l%*3j8%gb'
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = os.environ.get("DEBUG")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
 
-DEBUG = True
 
-ALLOWED_HOSTS = []
+# SECRET_KEY = 'django-insecure--r@5ryi)_8_c29he20zoe0$b!up^5+6u%x%ep*jg(l%*3j8%gb'
+# DEBUG = True
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -21,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'celery',
+    # 'django_celery_results',
 ]
 
 MIDDLEWARE = [
